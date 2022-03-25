@@ -40,6 +40,13 @@ export default function SeatsPage(){
                 <input placeholder='Digite seu CPF...'></input>
                 <Link to="/sucesso"><button>Reservar assento(s)</button></Link>
             </section>
+            <footer>
+                <img src="https://image.tmdb.org/t/p/w220_and_h330_face/zzXFM4FKDG7l1ufrAkwQYv2xvnh.jpg" alt="movie" />
+                <div>
+                    <p>Nome do filme</p>
+                    <p>Dados da sessão</p>
+                </div>
+            </footer>
         </main>
     )
 }

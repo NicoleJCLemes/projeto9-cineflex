@@ -21,6 +21,10 @@ export default function MainSession(){
                     </div>
                 </div>
             </section>
+            <footer>
+                <img src="https://image.tmdb.org/t/p/w220_and_h330_face/zzXFM4FKDG7l1ufrAkwQYv2xvnh.jpg" alt="movie" />
+                <p>Nome do filme</p>
+            </footer>
         </main>
     )
 }
