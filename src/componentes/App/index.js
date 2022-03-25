@@ -1,18 +1,20 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import MoviesPage from "../MoviesPage";
-import TimePage from "../TimePage";
-import SeatsPage from "../SeatsPage";
+import MainMovies from "../MainMovies";
+import MainSession from "../MainSession";
+import MainSeats from "../MainSeats";
 import SuccessPage from "../SuccessPage";
+import Header from "../Header";
 import './reset.css'
 import './style.css'
 
 export default function App(){
     return(
         <BrowserRouter>
+            <Header />
             <Routes>
-                <Route path="/" element={<MoviesPage />} />
-                <Route path="/filme/37" element={<TimePage />} />
-                <Route path="/sessao/240" element={<SeatsPage />} />
+                <Route path="/" element={<MainMovies />} />
+                <Route path="/sessoes/:movieID" element={<MainSession />} />
+                <Route path="/assentos/:sessionID" element={<MainSeats />} />
                 <Route path="/sucesso" element={<SuccessPage />} />
             </Routes>
         </BrowserRouter>

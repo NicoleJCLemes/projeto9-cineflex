@@ -1,0 +1,115 @@
+.main-seats {
+    padding-left: 24px;
+    padding-right: 24px;
+}
+
+.main-seats h2{
+    width: 100%;
+    text-align: center;
+    margin: 30px 0;
+    letter-spacing: 0.04em;
+    font-weight: 400;
+    font-size: 24px;
+    line-height: 28px;
+    color: #293845;
+}
+
+.main-seats section p {
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 21px;
+    display: flex;
+    align-items: center;
+    color: #293845;
+    margin: 7px 0 1px 0;
+}
+
+.main-seats section input {
+    width: 100%;
+    height: 51px;
+    background: #FFFFFF;
+    border: 1px solid #D5D5D5;
+    border-radius: 3px;
+}
+
+.main-seats section input::placeholder {
+    padding-left: 18px;
+    font-style: italic;
+    line-height: 21px;
+    font-size: 18px;
+    color: #AFAFAF
+}
+
+.main-seats .seats {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.main-seats .seat {
+    width: 26px;
+    height: 26px;
+    background: #C3CFD9;
+    border: 1px solid #808F9D;
+    box-sizing: border-box;
+    border-radius: 12px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    margin: 0 8px 18px 0;
+}
+
+.main-seats .subtitle {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 41px;
+}
+
+.main-seats .subtitle .selected p, .main-seats .subtitle .available p, .main-seats .subtitle .unavailable p {
+    font-weight: 400;
+    font-size: 13px;
+    line-height: 15px;
+    letter-spacing: -0.013em;
+    color: #4E5A65;
+}
+
+.main-seats .subtitle .selected .seat {
+    background-color: #8DD7CF;
+    border: 1px solid #1AAE9E;
+}
+
+.main-seats .subtitle .available .seat {
+    background-color: #C3CFD9;
+    border: 1px solid #7B8B99;
+}
+
+.main-seats .subtitle .unavailable .seat {
+    background-color: #FBE192;
+    border: 1px solid #F7C52B;
+}
+
+.main-seats .subtitle .seat {
+    margin: auto;
+}
+
+.main-seats button {
+    width: 225px;
+    height: 42px;
+    background: #E8833A;
+    border-radius: 3px;
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 21px;
+    letter-spacing: 0.04em;
+    color: #FFFFFF;
+    border: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 57px auto 0 auto;
+}
+
+.main-seats a {
+    text-decoration: none;
+}

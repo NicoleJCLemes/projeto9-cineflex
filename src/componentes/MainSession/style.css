@@ -1,0 +1,39 @@
+.main-session {
+    padding: 0 24px;
+}
+
+.main-session h2{
+    width: 100%;
+    text-align: center;
+    margin: 30px 0;
+    letter-spacing: 0.04em;
+    font-weight: 400;
+    font-size: 24px;
+    line-height: 28px;
+    color: #293845;
+}
+
+.main-session p {
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 23px;
+}
+
+.time-options {
+    display: flex;
+}
+
+.time-options button {
+    width: 82px;
+    height: 43px;
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 41px;
+    text-align: center;
+    letter-spacing: 0.02em;
+    background-color: #E8833A;
+    color: #FFFFFF;
+    border-radius: 3px;
+    margin: 23px 10px 23px 0;
+    border: none;
+}
