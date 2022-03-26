@@ -1,8 +1,21 @@
-import { Link } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
+import { useState, useEffect } from 'react';
+import axios from 'axios';
 import './style.css';
 
 export default function MainSession(){
-    return(
+
+    const {movieID} = useParams();
+
+    const [sessions, setSessions] = useState(null)
+    useEffect(() => {
+        const promise = axios.get(`https://mock-api.driven.com.br/api/v5/cineflex/movies/${movieID}/showtimes`);
+        promise.then((response) => setSessions(response.data))
+    },[])
+
+    return sessions === null ? (
+        <p>loading...</p>
+    ) : (
         <main className='main-session'>
             <h2>Selecione o horário</h2>
             <section>
@@ -22,8 +35,8 @@ export default function MainSession(){
                 </div>
             </section>
             <footer>
-                <img src="https://image.tmdb.org/t/p/w220_and_h330_face/zzXFM4FKDG7l1ufrAkwQYv2xvnh.jpg" alt="movie" />
-                <p>Nome do filme</p>
+                <img src={sessions.posterURL} alt="movie" />
+                <p>{sessions.title}</p>
             </footer>
         </main>
     )
