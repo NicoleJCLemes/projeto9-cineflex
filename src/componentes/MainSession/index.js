@@ -10,29 +10,31 @@ export default function MainSession(){
     const [sessions, setSessions] = useState(null)
     useEffect(() => {
         const promise = axios.get(`https://mock-api.driven.com.br/api/v5/cineflex/movies/${movieID}/showtimes`);
-        promise.then((response) => setSessions(response.data))
+        promise.then((response) => setSessions(response.data));
     },[])
-
+    
     return sessions === null ? (
-        <p>loading...</p>
+        <p className='loading'>loading...</p>
     ) : (
         <main className='main-session'>
             <h2>Selecione o horário</h2>
             <section>
-                <div>
-                    <p>Quinta-feira - 24/06/2021</p>
-                    <div className='time-options'>
-                        <Link to="/assentos/:sessionID"><button>15:00</button></Link>
-                        <Link to="/assentos/:sessionID"><button>19:00</button></Link>
-                    </div>
-                </div>
-                <div>
-                    <p>Sexta-feira - 25/06/2021</p>
-                    <div className='time-options'>
-                        <Link to="/assentos/:sessionID"><button>15:00</button></Link>
-                        <Link to="/assentos/:sessionID"><button>19:00</button></Link>
-                    </div>
-                </div>
+                {(sessions.days).map((session) => 
+                    {   
+                        const {weekday, date, id, showtimes} = session
+                        return (
+                            <div key={id}>
+                                <p>{weekday} - {date}</p>
+                                <div className='time-options'>
+                                    {showtimes.map((showtime) => {
+                                        const {name, id} = showtime
+                                        return <Link key={id} to={`/assentos/${id}`}><button>{name}</button></Link>
+                                    })}
+                                </div>
+                            </div>
+                        )
+                    })
+                }
             </section>
             <footer>
                 <img src={sessions.posterURL} alt="movie" />

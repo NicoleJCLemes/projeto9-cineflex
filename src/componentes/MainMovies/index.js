@@ -14,7 +14,7 @@ export default function MainMovies(){
 
 
     return movies === null ? (
-        <p>loading...</p>
+        <p className='loading'>loading...</p>
     ) : (
         <main className='main-movies'>
             <h2>Selecione o filme</h2>

@@ -38,6 +38,10 @@
     border: none;
 }
 
+.main-session section {
+    margin-bottom: 117px;
+}
+
 .main-session footer {
     position: fixed;
     width: 100%;
