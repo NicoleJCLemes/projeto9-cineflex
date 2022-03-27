@@ -1,5 +1,5 @@
 .main-seats {
-    padding: 0 24px;
+    padding: 0 20.5px;
 }
 
 .main-seats h2{
@@ -29,6 +29,7 @@
     background: #FFFFFF;
     border: 1px solid #D5D5D5;
     border-radius: 3px;
+    font-size: 18px;
 }
 
 .main-seats section input::placeholder {
@@ -40,14 +41,17 @@
 }
 
 .main-seats .seats {
+    width: 100%;
     display: flex;
     flex-wrap: wrap;
+    justify-content: center;
+    margin-bottom: 9px;
 }
 
 .main-seats .seat {
     width: 26px;
     height: 26px;
-    background: #C3CFD9;
+    background-color: #C3CFD9;
     border: 1px solid #808F9D;
     box-sizing: border-box;
     border-radius: 12px;
@@ -55,17 +59,20 @@
     justify-content: center;
     align-items: center;
     text-align: center;
-    margin: 0 8px 18px 0;
+    margin: 9px 3.5px;
+    font-size: 11px;
+    font-weight: 400;
+    line-height: 13px;
 }
 
 .main-seats .subtitle {
     display: flex;
-    justify-content: space-between;
+    justify-content: space-evenly;
     align-items: center;
     margin-bottom: 41px;
 }
 
-.main-seats .subtitle .selected p, .main-seats .subtitle .available p, .main-seats .subtitle .unavailable p {
+.main-seats .subtitle p, .main-seats .subtitle p, .main-seats .subtitle p {
     font-weight: 400;
     font-size: 13px;
     line-height: 15px;
@@ -73,17 +80,17 @@
     color: #4E5A65;
 }
 
-.main-seats .subtitle .selected .seat {
+.main-seats .selected {
     background-color: #8DD7CF;
     border: 1px solid #1AAE9E;
 }
 
-.main-seats .subtitle .available .seat {
+.main-seats .available {
     background-color: #C3CFD9;
     border: 1px solid #7B8B99;
 }
 
-.main-seats .subtitle .unavailable .seat {
+.main-seats .unavailable{
     background-color: #FBE192;
     border: 1px solid #F7C52B;
 }
@@ -106,7 +113,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    margin: 57px auto 0 auto;
+    margin: 57px auto 147px auto;
 }
 
 .main-seats a {
