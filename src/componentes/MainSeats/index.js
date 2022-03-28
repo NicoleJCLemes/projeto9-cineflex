@@ -1,4 +1,4 @@
-import { Link, useParams } from 'react-router-dom'
+import { Link, useNavigate, useParams } from 'react-router-dom'
 import { useState, useEffect } from 'react';
 import axios from 'axios';
 import Seat from './Seat';
@@ -7,8 +7,11 @@ import './style.css'
 export default function SeatsPage(){
 
     const {sessionID} = useParams();
-    const [seats, setSeats] = useState(null)
-    const [saveSelectedSeats, setSaveSelectedSeats] = useState([])
+    const [seats, setSeats] = useState(null);
+    const [saveSelectedSeats, setSaveSelectedSeats] = useState([]);
+    const [name, setName] = useState('');
+    const [cpf, setCpf] = useState('');
+    const navigate = useNavigate();
 
     useEffect(() => {
         const promise = axios.get(`https://mock-api.driven.com.br/api/v5/cineflex/showtimes/${sessionID}/seats`);
@@ -18,11 +21,22 @@ export default function SeatsPage(){
     function sendData(){
         const data = {
             ids: saveSelectedSeats,
-            name: 'nome',
-            cpf: 12312312312
+            name: name,
+            cpf: cpf
         }
         const promise = axios.post("https://mock-api.driven.com.br/api/v5/cineflex/seats/book-many", data);
-        promise.then(console.log('oi'));
+        promise.then(() => {
+            navigate('/sucesso', {state:{
+                title: seats.movie.title,
+                weekday: seats.day.weekday,
+                time: seats.name,
+                chosenSeats: seats.seats.name,
+                personName: name,
+                personCpf: cpf
+            }})
+        });
+
+        
     }
 
     return seats === null ? (
@@ -49,11 +63,13 @@ export default function SeatsPage(){
                         <p>Indisponível</p>
                     </div>
                 </div>
-                <p>Nome do comprador:</p>
-                <input type="text" placeholder='Digite seu nome...'></input>
-                <p>CPF do comprador:</p>
-                <input type="text" placeholder='Digite seu CPF...'></input>
-                <Link to="/sucesso"><button onClick={sendData}>Reservar assento(s)</button></Link>
+                <form>
+                    <p>Nome do comprador:</p>
+                    <input onChange={(e) => setName(e.target.value)} type="text" placeholder='Digite seu nome...' required />
+                    <p>CPF do comprador:</p>
+                    <input onChange={(e) => setCpf(e.target.value)} type="number" placeholder='Digite seu CPF...' required />
+                    <Link to="/sucesso"><button type="submit" onClick={sendData}>Reservar assento(s)</button></Link>
+                </form>
             </section>
             <footer>
                 <img src={seats.movie.posterURL} alt="movie" />

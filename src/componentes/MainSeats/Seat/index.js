@@ -11,10 +11,9 @@ export default function Seat(props){
             setSaveSelectedSeats([...saveSelectedSeats, id])
         } else if (selected === 'seat selected'){
             setSelected('seat available')
-            const index = saveSelectedSeats.indexOf(`${id}`)
+            const index = saveSelectedSeats.indexOf(id)
             saveSelectedSeats.splice(index, 1)
         }
-        console.log(saveSelectedSeats)
     }
 
     return isAvailable === false ? (
