@@ -1,19 +1,29 @@
 import { Link, useParams } from 'react-router-dom'
 import { useState, useEffect } from 'react';
 import axios from 'axios';
+import Seat from './Seat';
 import './style.css'
 
 export default function SeatsPage(){
 
     const {sessionID} = useParams();
     const [seats, setSeats] = useState(null)
-    //const [selected, setSelected] = useState('seat available')
-    let newClass
-    
+    const [saveSelectedSeats, setSaveSelectedSeats] = useState([])
+
     useEffect(() => {
         const promise = axios.get(`https://mock-api.driven.com.br/api/v5/cineflex/showtimes/${sessionID}/seats`);
         promise.then((response) => setSeats(response.data));
     },[])
+
+    function sendData(){
+        const data = {
+            ids: saveSelectedSeats,
+            name: 'nome',
+            cpf: 12312312312
+        }
+        const promise = axios.post("https://mock-api.driven.com.br/api/v5/cineflex/seats/book-many", data);
+        promise.then(console.log('oi'));
+    }
 
     return seats === null ? (
         <p className='loading'>loading...</p>
@@ -22,12 +32,8 @@ export default function SeatsPage(){
             <h2>Selecione o(s) assento(s)</h2>
             <section>
                 <div className='seats'>
-                    {(seats.seats).map((seat) => {
-                        seat.isAvailable === false ? newClass = 'seat unavailable' : newClass = 'seat available'
-                        //if(seat.isAvailable === false){setSelected('seat unavailable')}
-                        //return <div onClick={() => {if(seat.isAvailable === false){alert('indisponivel')} else {setSelected('seat selected')}}} key={seat.id} className={selected}>{seat.name}</div>
-                        return <div onClick={() => {if(seat.isAvailable === false){alert('indisponivel')} else {newClass = 'seat selected'}}} key={seat.id} className={newClass}>{seat.name}</div>
-                    })}
+                    {(seats.seats).map((seat) => 
+                    { return <Seat saveSelectedSeats={saveSelectedSeats} setSaveSelectedSeats={setSaveSelectedSeats} key={seat.id} id={seat.id} name={seat.name} isAvailable={seat.isAvailable} />})}
                 </div>
                 <div className='subtitle'>
                     <div>
@@ -47,7 +53,7 @@ export default function SeatsPage(){
                 <input type="text" placeholder='Digite seu nome...'></input>
                 <p>CPF do comprador:</p>
                 <input type="text" placeholder='Digite seu CPF...'></input>
-                <Link to="/sucesso"><button>Reservar assento(s)</button></Link>
+                <Link to="/sucesso"><button onClick={sendData}>Reservar assento(s)</button></Link>
             </section>
             <footer>
                 <img src={seats.movie.posterURL} alt="movie" />
